@@ -1,4 +1,9 @@
+include(":common")
+
 pluginManagement {
+
+    includeBuild("build-logic")
+
     repositories {
         google {
             content {
@@ -11,6 +16,7 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -20,5 +26,18 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "PCS Test"
+
 include(":app")
- 
+include(":datasource")
+include(
+    ":member:data",
+    ":member:domain",
+    ":member:presentation",
+    ":member:ui"
+)
+include(
+    ":common:data",
+    ":common:domain",
+    ":common:presentation",
+    ":common:ui"
+)

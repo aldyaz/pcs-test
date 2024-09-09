@@ -1,7 +1,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
-    kotlin("kapt")
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.aldyaz.android.buildFeature)
     id("dagger.hilt.android.plugin")
 }
 
@@ -33,11 +34,6 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-
-    buildFeatures {
-        viewBinding = true
-        compose = true
-    }
 }
 
 dependencies {
@@ -53,7 +49,7 @@ dependencies {
 
     implementation(libs.hilt.android)
 
-    kapt(libs.hilt.compiler)
+    ksp(libs.hilt.compiler)
 
     debugImplementation(libs.bundles.pluto)
     releaseImplementation(libs.bundles.pluto.noop)
