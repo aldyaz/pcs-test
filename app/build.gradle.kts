@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    kotlin("kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -26,12 +28,15 @@ android {
             )
         }
     }
+
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = "1.8"
+
+    buildFeatures {
+        viewBinding = true
+        compose = true
     }
 }
 
@@ -39,8 +44,22 @@ dependencies {
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
-    implementation(libs.material)
+
+    implementation(libs.bundles.coroutines)
+    implementation(libs.bundles.networking)
+    implementation(libs.bundles.compose)
+    implementation(libs.bundles.lifecycle)
+    implementation(libs.bundles.coil)
+
+    implementation(libs.hilt.android)
+
+    kapt(libs.hilt.compiler)
+
+    debugImplementation(libs.bundles.pluto)
+    releaseImplementation(libs.bundles.pluto.noop)
+
     testImplementation(libs.junit)
+
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
