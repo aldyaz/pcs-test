@@ -2,6 +2,7 @@ package com.aldyaz.datasource.di
 
 import com.aldyaz.datasource.di.qualifier.HttpLoggingInterceptorQualifier
 import com.aldyaz.datasource.di.qualifier.MainInterceptorQualifier
+import com.aldyaz.datasource.di.qualifier.PlutoInterceptorQualifier
 import com.aldyaz.datasource.remote.interceptor.MainInterceptor
 import com.google.gson.Gson
 import dagger.Module
@@ -33,11 +34,13 @@ class NetworkModule {
     @Provides
     fun provideOkHttpClient(
         @MainInterceptorQualifier mainInterceptor: Interceptor,
-        @HttpLoggingInterceptorQualifier httpLoggingInterceptor: Interceptor
+        @HttpLoggingInterceptorQualifier httpLoggingInterceptor: Interceptor,
+        @PlutoInterceptorQualifier plutoInterceptor: Interceptor
     ): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(mainInterceptor)
             .addInterceptor(httpLoggingInterceptor)
+            .addInterceptor(plutoInterceptor)
             .build()
     }
 

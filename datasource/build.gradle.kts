@@ -17,6 +17,9 @@ dependencies {
     implementation(libs.bundles.coroutines)
     implementation(libs.hilt.android)
 
+    debugImplementation(libs.bundles.pluto)
+    releaseImplementation(libs.bundles.pluto.noop)
+
     ksp(libs.hilt.compiler)
 
     testImplementation(libs.junit)
