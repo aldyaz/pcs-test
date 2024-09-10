@@ -53,7 +53,7 @@ fun MemberCardItem(
                     )
             )
             Column(
-                verticalArrangement = Arrangement.SpaceAround,
+                verticalArrangement = Arrangement.SpaceEvenly,
                 modifier = Modifier
                     .fillMaxHeight()
                     .weight(1f)
