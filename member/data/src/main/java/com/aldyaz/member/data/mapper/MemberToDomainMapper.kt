@@ -22,11 +22,11 @@ class MemberToDomainMapper : (MemberDto) -> MemberDomainModel {
     }
 
     private fun obtainFirstLastName(name: String): Pair<String, String> {
-        var firstName = ""
-        var lastName = ""
-        val split = name.split("\\s+")
+        val firstName: String
+        val lastName: String
+        val split = name.trim().split(Regex("\\s+"))
         firstName = split.firstOrNull().orEmpty()
-        lastName = split.filterIndexed { index, _ -> index != 0 }.joinToString(" ")
+        lastName = split.filterIndexed { index, _ -> index > 0 }.joinToString(" ")
         return firstName to lastName
     }
 

@@ -17,14 +17,17 @@ import com.aldyaz.common.ui.component.FullError
 import com.aldyaz.common.ui.component.FullLoading
 import com.aldyaz.common.ui.component.ScreenEnterObserver
 import com.aldyaz.member.presentation.intent.MemberListIntent
+import com.aldyaz.member.presentation.intent.MemberSharedIntent
 import com.aldyaz.member.presentation.model.MemberPresentationModel
 import com.aldyaz.member.presentation.state.MemberListState
 import com.aldyaz.member.presentation.viewmodel.MemberListViewModel
+import com.aldyaz.member.presentation.viewmodel.MemberSharedViewModel
 import com.aldyaz.member.ui.list.component.MemberCardItem
 
 @Composable
 fun MemberListPage(
     onClickItem: () -> Unit,
+    sharedViewModel: MemberSharedViewModel,
     viewModel: MemberListViewModel = hiltViewModel()
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
@@ -39,6 +42,8 @@ fun MemberListPage(
             viewModel.onIntentReceived(MemberListIntent.OnEnter)
         },
         onClickItem = {
+            sharedViewModel.onIntentReceived(MemberSharedIntent.OnSelectMember(it))
+            onClickItem()
         }
     )
 }
