@@ -1,5 +1,8 @@
 package com.aldyaz.member.ui.list
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -7,6 +10,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.aldyaz.common.ui.component.FullError
@@ -63,13 +67,19 @@ private fun MemberListContent(
             modifier = modifier
         )
 
-        state.success -> LazyColumn(modifier = modifier) {
-            items(state.data) { item ->
-                MemberCardItem(
-                    item = item,
-                    onClick = {
-                    }
-                )
+        state.success -> {
+            LazyColumn(
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+                contentPadding = PaddingValues(8.dp),
+                modifier = modifier
+            ) {
+                items(state.data) { item ->
+                    MemberCardItem(
+                        item = item,
+                        onClick = {},
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                }
             }
         }
     }
