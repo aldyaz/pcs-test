@@ -17,6 +17,7 @@ import com.aldyaz.common.ui.component.FullError
 import com.aldyaz.common.ui.component.FullLoading
 import com.aldyaz.common.ui.component.ScreenEnterObserver
 import com.aldyaz.member.presentation.intent.MemberListIntent
+import com.aldyaz.member.presentation.model.MemberPresentationModel
 import com.aldyaz.member.presentation.state.MemberListState
 import com.aldyaz.member.presentation.viewmodel.MemberListViewModel
 import com.aldyaz.member.ui.list.component.MemberCardItem
@@ -36,6 +37,8 @@ fun MemberListPage(
         state = state,
         onRetryClick = {
             viewModel.onIntentReceived(MemberListIntent.OnEnter)
+        },
+        onClickItem = {
         }
     )
 }
@@ -43,12 +46,14 @@ fun MemberListPage(
 @Composable
 private fun MemberListScaffold(
     state: MemberListState,
-    onRetryClick: () -> Unit
+    onRetryClick: () -> Unit,
+    onClickItem: (MemberPresentationModel) -> Unit
 ) {
     Scaffold { contentPadding ->
         MemberListContent(
             state = state,
             onRetryClick = onRetryClick,
+            onClickItem = onClickItem,
             modifier = Modifier.padding(contentPadding)
         )
     }
@@ -58,6 +63,7 @@ private fun MemberListScaffold(
 private fun MemberListContent(
     state: MemberListState,
     onRetryClick: () -> Unit,
+    onClickItem: (MemberPresentationModel) -> Unit,
     modifier: Modifier = Modifier
 ) {
     when {
@@ -76,7 +82,9 @@ private fun MemberListContent(
                 items(state.data) { item ->
                     MemberCardItem(
                         item = item,
-                        onClick = {},
+                        onClick = {
+                            onClickItem(item)
+                        },
                         modifier = Modifier.fillMaxWidth()
                     )
                 }

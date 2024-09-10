@@ -25,7 +25,7 @@ class AndroidLibraryBasePlugin : Plugin<Project> {
             compileSdkVersion(34)
 
             defaultConfig {
-                minSdk = 21
+                minSdk = 26
             }
 
             compileOptions {
