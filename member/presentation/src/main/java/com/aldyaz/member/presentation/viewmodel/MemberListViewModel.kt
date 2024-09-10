@@ -46,6 +46,7 @@ class MemberListViewModel @Inject constructor(
                         loading = false,
                         data = result.data.map {
                             MemberPresentationModel(
+                                id = it.id,
                                 firstName = it.firstName,
                                 lastName = it.lastName,
                                 avatarUrl = it.avatarUrl,

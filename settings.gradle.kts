@@ -1,4 +1,3 @@
-include(":common")
 
 pluginManagement {
 
@@ -41,3 +40,5 @@ include(
     ":common:presentation",
     ":common:ui"
 )
+
+gradle.startParameter.excludedTaskNames.addAll(listOf(":build-logic:convention:testClasses"))

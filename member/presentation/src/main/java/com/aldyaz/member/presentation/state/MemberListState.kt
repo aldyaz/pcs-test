@@ -8,6 +8,8 @@ data class MemberListState(
     val data: List<MemberPresentationModel> = listOf()
 ) {
 
+    val success = !loading && !error
+
     companion object {
         val Initial = MemberListState()
     }

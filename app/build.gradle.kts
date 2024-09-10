@@ -1,9 +1,10 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
-    alias(libs.plugins.ksp)
     alias(libs.plugins.aldyaz.android.buildFeature)
     id("dagger.hilt.android.plugin")
+    kotlin("plugin.serialization") version libs.versions.kotlin
+    kotlin("kapt")
 }
 
 android {
@@ -36,7 +37,21 @@ android {
     }
 }
 
+kapt {
+    correctErrorTypes = true
+}
+
 dependencies {
+
+    implementation(project(":common:data"))
+    implementation(project(":common:domain"))
+    implementation(project(":common:presentation"))
+    implementation(project(":common:ui"))
+
+    implementation(project(":member:data"))
+    implementation(project(":member:domain"))
+    implementation(project(":member:presentation"))
+    implementation(project(":member:ui"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -49,7 +64,9 @@ dependencies {
 
     implementation(libs.hilt.android)
 
-    ksp(libs.hilt.compiler)
+    implementation(libs.kotlinx.serialization)
+
+    kapt(libs.hilt.compiler)
 
     debugImplementation(libs.bundles.pluto)
     releaseImplementation(libs.bundles.pluto.noop)

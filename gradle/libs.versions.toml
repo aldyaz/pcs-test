@@ -24,6 +24,7 @@ ksp = "2.0.0-1.0.24"
 compose-plugin = "1.6.11"
 jetbrainsKotlinJvm = "2.0.0"
 materialVersion = "1.12.0"
+serialization = "1.7.2"
 
 [libraries]
 androidBuildTools = { module = "com.android.tools.build:gradle", version.ref = "agp" }
@@ -65,9 +66,12 @@ compose-hilt-navigation = { group = "androidx.hilt", name = "hilt-navigation-com
 compose-activity = { module = "androidx.activity:activity-compose", version.ref = "activity" }
 compose-material = { module = "androidx.compose.material:material", version.ref = "compose" }
 compose-material-icon = { module = "androidx.compose.material:material-icons-extended", version.ref = "compose" }
+compose-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
+compose-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
 coil = { module = "io.coil-kt:coil", version.ref = "coil" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 material = { group = "com.google.android.material", name = "material", version.ref = "materialVersion" }
+kotlinx-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -87,7 +91,7 @@ coroutines = ["coroutines-core", "coroutines-android"]
 compose = ["compose-ui", "compose-animation", "compose-foundation", "compose-runtime",
     "compose-runtime-livedata", "compose-lifecycle-viewmodel", "compose-lifecycle-runtime",
     "compose-navigation", "compose-hilt-navigation", "compose-activity", "compose-material",
-    "compose-material-icon"]
+    "compose-material-icon", "compose-tooling", "compose-tooling-preview"]
 lifecycle = ["lifecycle-viewmodel-ktx", "lifecycle-livedata-ktx", "lifecycle-runtime-ktx"]
 coil = ["coil", "coil-compose"]
 pluto = ["pluto", "pluto-network", "pluto-okhttp"]

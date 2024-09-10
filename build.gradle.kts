@@ -25,3 +25,7 @@ buildscript {
 tasks.register("clean", Delete::class) {
     delete(rootProject.layout.buildDirectory)
 }
+
+tasks.withType(JavaCompile::class.java) {
+    options.compilerArgs.add("-Xlint:deprecation")
+}

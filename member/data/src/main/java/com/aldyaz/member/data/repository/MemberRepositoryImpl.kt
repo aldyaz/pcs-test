@@ -7,9 +7,8 @@ import com.aldyaz.datasource.remote.model.HttpSourceState
 import com.aldyaz.member.data.mapper.MemberToDomainMapper
 import com.aldyaz.member.domain.model.MemberDomainModel
 import com.aldyaz.member.domain.repository.MemberRepository
-import javax.inject.Inject
 
-class MemberRepositoryImpl @Inject constructor(
+class MemberRepositoryImpl(
     private val memberCloudDataSource: MemberCloudDataSource,
     private val memberToDomainMapper: MemberToDomainMapper,
     private val httpExceptionToDomainMapper: HttpExceptionToDomainMapper

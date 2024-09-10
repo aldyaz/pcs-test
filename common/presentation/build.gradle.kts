@@ -1,6 +1,6 @@
 plugins {
     alias(libs.plugins.aldyaz.android.library.base)
-    alias(libs.plugins.ksp)
+    kotlin("kapt")
 }
 
 android {
@@ -19,7 +19,7 @@ dependencies {
     implementation(libs.bundles.coroutines)
     implementation(libs.bundles.lifecycle)
 
-    ksp(libs.lifecycle.compiler)
+    kapt(libs.lifecycle.compiler)
 
     testImplementation(libs.junit)
 
