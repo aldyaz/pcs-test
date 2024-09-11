@@ -2,6 +2,7 @@ package com.aldyaz.member.presentation.viewmodel
 
 import androidx.lifecycle.viewModelScope
 import com.aldyaz.common.domain.base.ResultState
+import com.aldyaz.common.domain.coroutines.CoroutinesContextProvider
 import com.aldyaz.common.presentation.viewmodel.BaseViewModel
 import com.aldyaz.member.domain.interactor.GetMemberListUseCase
 import com.aldyaz.member.presentation.intent.MemberListIntent
@@ -16,7 +17,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MemberListViewModel @Inject constructor(
-    private val getMemberListUseCase: GetMemberListUseCase
+    private val getMemberListUseCase: GetMemberListUseCase,
+    private val coroutinesContextProvider: CoroutinesContextProvider
 ) : BaseViewModel<MemberListIntent>() {
 
     private val _state = MutableStateFlow(MemberListState.Initial)
@@ -32,7 +34,7 @@ class MemberListViewModel @Inject constructor(
         }
     }
 
-    private fun getMemberList() = viewModelScope.launch {
+    private fun getMemberList() = viewModelScope.launch(coroutinesContextProvider.io) {
         _state.updateState {
             copy(
                 loading = true,
