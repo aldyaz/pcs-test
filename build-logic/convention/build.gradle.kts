@@ -9,6 +9,10 @@ dependencies {
 
 gradlePlugin {
     plugins {
+        register("androidAppBase") {
+            id = "aldyaz.android.app.base"
+            implementationClass = "com.aldyaz.buildlogic.convention.AndroidAppBasePlugin"
+        }
         register("androidLibraryBase") {
             id = "aldyaz.android.library.base"
             implementationClass = "com.aldyaz.buildlogic.convention.AndroidLibraryBasePlugin"

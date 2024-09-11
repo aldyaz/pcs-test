@@ -1,6 +1,5 @@
 plugins {
-    alias(libs.plugins.androidApplication)
-    alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.aldyaz.android.app.base)
     alias(libs.plugins.aldyaz.android.buildFeature)
     id("dagger.hilt.android.plugin")
     kotlin("plugin.serialization") version libs.versions.kotlin
@@ -9,12 +8,9 @@ plugins {
 
 android {
     namespace = "com.aldyaz.pcstest"
-    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.aldyaz.pcstest"
-        minSdk = 26
-        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -29,11 +25,6 @@ android {
                 "proguard-rules.pro"
             )
         }
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
     }
 }
 

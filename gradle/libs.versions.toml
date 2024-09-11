@@ -81,6 +81,7 @@ compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 jetbrainsKotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
+aldyaz-android-app-base = { id = "aldyaz.android.app.base", version = "unspecified" }
 aldyaz-android-library-base = { id = "aldyaz.android.library.base", version = "unspecified" }
 aldyaz-android-buildFeature = { id = "aldyaz.android.buildFeature", version = "unspecified" }
 

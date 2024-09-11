@@ -1,7 +1,6 @@
 package com.aldyaz.buildlogic.convention
 
 import com.android.build.gradle.BaseExtension
-import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.withType
@@ -22,16 +21,8 @@ class AndroidLibraryBasePlugin : Plugin<Project> {
 
     private fun Project.configureAndroid() {
         extensions.getByType(BaseExtension::class.java).apply {
-            compileSdkVersion(34)
-
-            defaultConfig {
-                minSdk = 26
-            }
-
-            compileOptions {
-                sourceCompatibility = JavaVersion.VERSION_17
-                targetCompatibility = JavaVersion.VERSION_17
-            }
+            configureAndroidBaseVersion()
+            configureCompileOptions()
 
             tasks.withType<KotlinJvmCompile>().configureEach {
                 compilerOptions {
