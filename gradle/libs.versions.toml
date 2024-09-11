@@ -22,7 +22,6 @@ activity = "1.9.2"
 hilt-compose = "1.2.0"
 ksp = "2.0.0-1.0.24"
 compose-plugin = "1.6.11"
-jetbrainsKotlinJvm = "2.0.0"
 materialVersion = "1.12.0"
 serialization = "1.7.2"
 
@@ -79,7 +78,7 @@ jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "k
 jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
-jetbrainsKotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
+jetbrainsKotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
 aldyaz-android-app-base = { id = "aldyaz.android.app.base", version = "unspecified" }
 aldyaz-android-library-base = { id = "aldyaz.android.library.base", version = "unspecified" }
